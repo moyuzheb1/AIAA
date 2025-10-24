@@ -53,20 +53,20 @@ if __name__ == "__main__":
     print("=== 通用上下文Agent（输入'exit'退出）===")
     while True:
         # 获取用户通用需求（支持问答、任务描述等）
-        user需求 = input("\n请输入你的需求（如问题、任务描述等，输入'exit'退出）：")
+        user = input("\n请输入你的需求（如问题、任务描述等，输入'exit'退出）：")
         
         # 退出逻辑
-        if user需求.lower() == "exit":
+        if user.lower() == "exit":
             print("Agent已退出，再见！")
             break
         
         # 空输入防护（避免无效模型调用）
-        if not user需求.strip():
+        if not user.strip():
             print("提示：请输入有效的需求内容！")
             continue
         
         # 调用Agent并打印结果
-        result = general_agent_interact(user需求)
+        result = general_agent_interact(user)
         print(f"\nAgent回复：{result}")
         
         # （可选）查看当前对话历史（调试用，取消注释即可）
