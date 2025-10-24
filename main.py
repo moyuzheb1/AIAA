@@ -1,12 +1,13 @@
 from langchain_openai import ChatOpenAI  
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage  
 from langchain_core.output_parsers import StrOutputParser  
+import os  # 新增：导入os模块用于读取环境变量
 
-# -------------------------- 1. 初始化核心组件（⚠️ 立即替换你的API密钥！）--------------------------
+# -------------------------- 1. 初始化核心组件--------------------------
 # 模型初始化（保持原连接配置，适配通用任务）
 model = ChatOpenAI(  
     base_url="https://openrouter.ai/api/v1",  
-    api_key="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",  # 危险：此密钥已公开，务必替换为个人私有密钥！
+    api_key=os.getenv("OPENROUTER_API_KEY"),  # 从环境变量获取密钥
     model="deepseek/deepseek-r1-0528-qwen3-8b:free",  
 )  
 
